@@ -7,7 +7,7 @@ const escapeMD = require('markdown-escape');
 // Config
 const redisURL = process.env.REDIS_URL;
 const redisPrefix = process.env.REDIS_PREFIX || 'XPBOT_';
-const telegramToken = process.env.TELEGRAM_TOKEN;
+const telegramToken = process.env.TELEGRAM_TOKEN 5643409665:AAEMbdUKTY9RSllws5UmAT77ofF46etQda4;
 const minXP = parseInt(process.env.MIN_XP) || 15;
 const rateLimit = parseInt(process.env.RATE_LIMIT) || 15;
 const lessBotSpam = process.env.LESS_BOT_SPAM == "true";
@@ -72,13 +72,13 @@ async function displayRank(msg, match) {
     const key = redisPrefix + gid;
 
     if (msg.chat.type == "private") {
-        bot.sendMessageNoSpam(gid, "Sorry, you can't gain XP in private chats.", {}, msg);
+        bot.sendMessageNoSpam(gid, "Lo siento, no puedes ganar XP en chats privados.", {}, msg);
         return;
     }
 
     const score = await redis.zscore(key, uid);
     if (!score) {
-        bot.sendMention(gid, msg.from, ", you're not ranked yet 👶", msg);
+        bot.sendMention(gid, msg.from, ", aún no estás en el ranking 👶", msg);
         return;
     }
 
@@ -165,7 +165,7 @@ async function moderateContent(msg, match) {
 async function displayHelp(msg, match) {
     if (msg.chat.type != "private")
         return;
-    bot.sendMessageNoSpam(msg.chat.id, "Hi, I'm XP Bot. Add me to a group and I will track users' message count (XP). " +
+    bot.sendMessageNoSpam(msg.chat.id, "Hola, soy XP Bot. Agrégame a un grupo y haré un seguimiento del número de mensajes de los usuarios (XP). " +
         "Available commands:\n" +
         " - /xp displays the XP count and rank of the user\n" +
         " - /ranks displays the top 3");
